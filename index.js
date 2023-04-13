@@ -4,8 +4,11 @@ const git = simpleGit();
 
 const repoUrl = 'https://github.com/raj-vlabs/simple-git-sample.git'
 try {
-   await git.init();
-   await git.addRemote('origin', repoUrl);
+	git.add('./*')
+		.commit('uploaded files')
+		.addRemote('origin', repoUrl);
+   await git.push(repoUrl, 'main');
+    console.log("push successful")
 } catch (e) {
     console.log("Error::", e)
 }
